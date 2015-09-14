@@ -1,2 +1,154 @@
-<h1>Main#index</h1>
-<p>Find me in app/views/main/index.html.erb</p>
+<header>
+  <div class="container">
+    <div class="col-xs-12">
+      <h1>Dados Abertos<br><small>Cidade de Campinas, SP</small></h1>
+
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="filter-year">Ano</label>
+          <select class="form-control selectpicker" id="filter-year">
+            <option>2014</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="filter-month">Mês</label>
+          <select class="form-control selectpicker" id="filter-month">
+            <option>Todos</option>
+            <option>Janeiro</option>
+            <option>Fevereiro</option>
+            <option>Março</option>
+            <option>Abril</option>
+            <option>Maio</option>
+            <option>Junho</option>
+            <option>Julho</option>
+            <option>Agosto</option>
+            <option>Setembro</option>
+            <option>Outubro</option>
+            <option>Novembro</option>
+            <option>Dezembro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="filter-domain">Domínio</label>
+          <select class="form-control selectpicker" id="filter-domain">
+            <option>Dominio A</option>
+            <option>Dominio B</option>
+            <option>Dominio C</option>
+            <option>Dominio D</option>
+            <option>Dominio E</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="filter-subdomain">Subdomínio</label>
+          <select class="form-control selectpicker" id="filter-subdomain">
+            <option>Subdominio A</option>
+            <option>Subdominio B</option>
+            <option>Subdominio C</option>
+            <option>Subdominio D</option>
+            <option>Subdominio E</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default btn-block">Filtrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">2014</div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th colspan="2"></th>
+              <th class="text-center">Janeiro</th>
+              <th class="text-center">Fevereiro</th>
+              <th class="text-center">Março</th>
+              <th class="text-center">Abril</th>
+              <th class="text-center">Maio</th>
+              <th class="text-center">Junho</th>
+              <th class="text-center">Julho</th>
+              <th class="text-center">Agosto</th>
+              <th class="text-center">Setembro</th>
+              <th class="text-center">Outubro</th>
+              <th class="text-center">Novembro</th>
+              <th class="text-center">Dezembro</th>
+              <th class="text-center">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="text-center text-nowrap vcenter" rowspan="2" scope="row">Dominio A</th>
+              <th class="text-center text-nowrap" scope="row">Subdominio A</th>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+            </tr>
+            <tr>
+              <th class="text-center text-nowrap" scope="row">Subdominio B</th>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+            </tr>
+            <tr>
+              <th class="text-center text-nowrap vcenter" rowspan="2" scope="row">Dominio B</th>
+              <th class="text-center text-nowrap" scope="row">Subdominio A</th>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+            </tr>
+            <tr>
+              <th class="text-center text-nowrap" scope="row">Subdominio B</th>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+              <td class="text-center text-nowrap">R$ 0,00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
