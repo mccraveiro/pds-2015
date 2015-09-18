@@ -2,6 +2,12 @@ body {
   background-color: #fafafa;
 }
 
+.btn,
+.dropdown-menu,
+input {
+  border-radius: 0 !important;
+}
+
 header {
   background-color: #546E7A;
   color: white;
@@ -14,9 +20,13 @@ header {
     font-size: 50px;
   }
 
-  .btn,
-  .dropdown-menu {
-    border-radius: 0 !important;
+  h1 a {
+    color: white;
+  }
+
+  h1 a:hover {
+    color: white;
+    text-decoration: none;
   }
 
   .header-user-profile {
