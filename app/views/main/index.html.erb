@@ -1,14 +1,5 @@
 <header>
-  <div class="container-fluid">
-    <div class="col-xs-8">
-      <h1>Dados Abertos</h1>
-    </div>
-    <div class="col-xs-4 header-user-profile">
-      <a href="#">CADASTRE-SE</a>
-      <span class="separator">|</span>
-      <a href="#">LOGIN</a>
-    </div>
-  </div>
+  <%= render "header" %>
   <div class="container-fluid toolbar">
     <div class="col-xs-12">
       <form class="form-inline">
@@ -160,9 +151,7 @@
 </div>
 <div class="container-fluid footer">
   <div class="col-xs-12 text-center text-muted">
-    <a href="#">Cadastre-se</a> para acessar os dados granulares e salvar suas consultas
+    <a href="/signup">Cadastre-se</a> para acessar os dados granulares e salvar suas consultas
   </div>
-  <div class="col-xs-12 text-center text-muted">
-    2015 © Dados Abertos
-  </div>
+  <%= render "copyright" %>
 </div>
