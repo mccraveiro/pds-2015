@@ -3,29 +3,79 @@ body {
 }
 
 header {
-  background-color: #2196F3;
+  background-color: #546E7A;
   color: white;
   margin-top: 0;
-  padding-top: 1em;
-  padding-bottom: 2em;
+  padding-top: 1.3em;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 
-  h1 small,
-  a {
-    color: white;
+  h1 {
+    padding-bottom: 0.7em;
+    font-size: 50px;
   }
 
-  form {
-    margin-top: 3em;
-  }
-
-  * {
+  .btn,
+  .dropdown-menu {
     border-radius: 0 !important;
+  }
+
+  .header-user-profile {
+    text-align: right;
+    padding-top: 0.4em;
+
+    a {
+      color: white;
+      letter-spacing: 0.2em;
+      font-weight: 300;
+    }
+
+    a:hover {
+      color: white;
+    }
+
+    .separator {
+      margin: 0 1em;
+    }
+  }
+}
+
+.toolbar {
+  height: 44px;
+  background-color: white;
+  color: black;
+
+  .btn.dropdown-toggle {
+    border: 0px !important;
+  }
+
+  .dropdown-menu {
+    margin-top: 11px !important;
+  }
+
+  .dropdown-menu ul {
+    margin-top: 0 !important;
+  }
+
+  .form-group ~ .form-group {
+    margin-left: -5px;
+  }
+}
+
+@media(max-width: 768px) {
+  .toolbar {
+    height: 245px;
+    padding-top: 5px;
+  }
+
+  .form-group {
+    width: 100% !important;
+    margin-left: 0 !important;
   }
 }
 
 .panel {
   margin-top: 3em;
+  margin-bottom: 3em;
   border-radius: 0;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   padding-bottom: 2em;
@@ -56,8 +106,6 @@ table {
   }
 }
 
-@media(min-width: 768px) {
-  .form-group:last-child {
-    padding-top: 1.7em;
-  }
+.footer {
+  line-height: 2em;
 }

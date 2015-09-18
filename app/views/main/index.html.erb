@@ -1,18 +1,29 @@
 <header>
-  <div class="container">
+  <div class="container-fluid">
+    <div class="col-xs-8">
+      <h1>Dados Abertos</h1>
+    </div>
+    <div class="col-xs-4 header-user-profile">
+      <a href="#">CADASTRE-SE</a>
+      <span class="separator">|</span>
+      <a href="#">LOGIN</a>
+    </div>
+  </div>
+  <div class="container-fluid toolbar">
     <div class="col-xs-12">
-      <h1>Dados Abertos<br><small>Cidade de Campinas, SP</small></h1>
-
       <form class="form-inline">
         <div class="form-group">
-          <label for="filter-year">Ano</label>
-          <select class="form-control selectpicker" id="filter-year">
+          <select class="form-control selectpicker" id="filter-year" title="Cidade">
+            <option selected="selected">Campinas, SP</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select class="form-control selectpicker" id="filter-year" title="Ano">
             <option>2014</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="filter-month">Mês</label>
-          <select class="form-control selectpicker" id="filter-month">
+          <select class="form-control selectpicker" id="filter-month" title="Mês">
             <option>Todos</option>
             <option>Janeiro</option>
             <option>Fevereiro</option>
@@ -29,8 +40,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="filter-domain">Domínio</label>
-          <select class="form-control selectpicker" id="filter-domain">
+          <select class="form-control selectpicker" id="filter-domain" title="Domínio">
             <option>Dominio A</option>
             <option>Dominio B</option>
             <option>Dominio C</option>
@@ -39,8 +49,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="filter-subdomain">Subdomínio</label>
-          <select class="form-control selectpicker" id="filter-subdomain">
+          <select class="form-control selectpicker" id="filter-subdomain" title="Subdomínio">
             <option>Subdominio A</option>
             <option>Subdominio B</option>
             <option>Subdominio C</option>
@@ -48,14 +57,11 @@
             <option>Subdominio E</option>
           </select>
         </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-default btn-block">Filtrar</button>
-        </div>
       </form>
     </div>
   </div>
 </header>
-<div class="container">
+<div class="container-fluid">
   <div class="col-xs-12">
     <div class="panel panel-default">
       <div class="panel-heading">2014</div>
@@ -150,5 +156,13 @@
         </table>
       </div>
     </div>
+  </div>
+</div>
+<div class="container-fluid footer">
+  <div class="col-xs-12 text-center text-muted">
+    <a href="#">Cadastre-se</a> para acessar os dados granulares e salvar suas consultas
+  </div>
+  <div class="col-xs-12 text-center text-muted">
+    2015 © Dados Abertos
   </div>
 </div>
