@@ -1,3 +1,111 @@
-// Place all the styles related to the main controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  background-color: #fafafa;
+}
+
+header {
+  background-color: #546E7A;
+  color: white;
+  margin-top: 0;
+  padding-top: 1.3em;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+  h1 {
+    padding-bottom: 0.7em;
+    font-size: 50px;
+  }
+
+  .btn,
+  .dropdown-menu {
+    border-radius: 0 !important;
+  }
+
+  .header-user-profile {
+    text-align: right;
+    padding-top: 0.4em;
+
+    a {
+      color: white;
+      letter-spacing: 0.2em;
+      font-weight: 300;
+    }
+
+    a:hover {
+      color: white;
+    }
+
+    .separator {
+      margin: 0 1em;
+    }
+  }
+}
+
+.toolbar {
+  height: 44px;
+  background-color: white;
+  color: black;
+
+  .btn.dropdown-toggle {
+    border: 0px !important;
+  }
+
+  .dropdown-menu {
+    margin-top: 11px !important;
+  }
+
+  .dropdown-menu ul {
+    margin-top: 0 !important;
+  }
+
+  .form-group ~ .form-group {
+    margin-left: -5px;
+  }
+}
+
+@media(max-width: 768px) {
+  .toolbar {
+    height: 245px;
+    padding-top: 5px;
+  }
+
+  .form-group {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+}
+
+.panel {
+  margin-top: 3em;
+  margin-bottom: 3em;
+  border-radius: 0;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  padding-bottom: 2em;
+}
+
+.panel-heading {
+  background-color: white !important;
+  border-bottom: 0 !important;
+  font-size: 3em;
+  font-weight: 300;
+  padding: 0.5em !important;
+  text-align: center;
+}
+
+.vcenter {
+  vertical-align: middle !important;
+}
+
+table {
+  th {
+    color: #777;
+    font-weight: normal !important;
+  }
+
+  th, td {
+    padding: 1em !important;
+    border: 0 !important;
+  }
+}
+
+.footer {
+  line-height: 2em;
+}
