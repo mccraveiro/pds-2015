@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/mccraveiro/pds-2015.png?label=ready&title=Ready)](https://waffle.io/mccraveiro/pds-2015)
 # README
 
 * **Ruby version required**
