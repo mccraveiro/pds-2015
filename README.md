@@ -17,12 +17,18 @@
 
 * **Database creation**
 
+  Postgres should be running on localhost. A user with createdb permission should be created using `dadosabertos` as username and `password` as password. The following postgres command should do it:
+  ```
+  create role dadosabertos with createdb login password 'password';
+  ```
+
 * **Database initialization**
+
+  Run `rake db:create` to create required databases.
+  Also, `rake db:migrate` should be run everytime there is a model update.
 
 * **How to run the test suite**
 
 * **Services (job queues, cache servers, search engines, etc.)**
 
 * **Deployment instructions**
-
-* ...
