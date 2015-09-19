@@ -3,8 +3,14 @@
     <h1><a href="/">Dados Abertos</a></h1>
   </div>
   <div class="col-xs-4 header-user-profile">
-    <a href="/signup">CADASTRE-SE</a>
-    <span class="separator">|</span>
-    <a href="/login">LOGIN</a>
+    <% if current_user %>
+      <span>Logado como <%= current_user.name %></span>
+      <span class="separator">|</span>
+      <a href="/sair">SAIR</a>
+    <% else %>
+      <a href="/cadastre-se">CADASTRE-SE</a>
+      <span class="separator">|</span>
+      <a href="/login">LOGIN</a>
+    <% end %>
   </div>
 </div>

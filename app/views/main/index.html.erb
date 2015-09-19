@@ -104,8 +104,10 @@
   </div>
 </div>
 <div class="container-fluid footer">
-  <div class="col-xs-12 text-center text-muted">
-    <a href="/signup">Cadastre-se</a> para acessar os dados granulares e salvar suas consultas
-  </div>
+  <% if !current_user %>
+    <div class="col-xs-12 text-center text-muted">
+      <a href="/cadastre-se">Cadastre-se</a> para acessar os dados granulares e salvar suas consultas
+    </div>
+  <% end %>
   <%= render "copyright" %>
 </div>
