@@ -2,53 +2,7 @@
   <%= render "header" %>
   <div class="container-fluid toolbar">
     <div class="col-xs-12">
-      <form class="form-inline">
-        <div class="form-group">
-          <select class="form-control selectpicker" id="filter-year" title="Cidade">
-            <option selected="selected">Campinas, SP</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <select class="form-control selectpicker" id="filter-year" title="Ano">
-            <option>2014</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <select class="form-control selectpicker" id="filter-month" title="Mês">
-            <option>Todos</option>
-            <option>Janeiro</option>
-            <option>Fevereiro</option>
-            <option>Março</option>
-            <option>Abril</option>
-            <option>Maio</option>
-            <option>Junho</option>
-            <option>Julho</option>
-            <option>Agosto</option>
-            <option>Setembro</option>
-            <option>Outubro</option>
-            <option>Novembro</option>
-            <option>Dezembro</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <select class="form-control selectpicker" id="filter-domain" title="Domínio">
-            <option>Dominio A</option>
-            <option>Dominio B</option>
-            <option>Dominio C</option>
-            <option>Dominio D</option>
-            <option>Dominio E</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <select class="form-control selectpicker" id="filter-subdomain" title="Subdomínio">
-            <option>Subdominio A</option>
-            <option>Subdominio B</option>
-            <option>Subdominio C</option>
-            <option>Subdominio D</option>
-            <option>Subdominio E</option>
-          </select>
-        </div>
-      </form>
+      <%= render "filters" %>
     </div>
   </div>
 </header>
@@ -150,8 +104,10 @@
   </div>
 </div>
 <div class="container-fluid footer">
-  <div class="col-xs-12 text-center text-muted">
-    <a href="/signup">Cadastre-se</a> para acessar os dados granulares e salvar suas consultas
-  </div>
+  <% if !current_user %>
+    <div class="col-xs-12 text-center text-muted">
+      <a href="/cadastre-se">Cadastre-se</a> para acessar os dados granulares e salvar suas consultas
+    </div>
+  <% end %>
   <%= render "copyright" %>
 </div>

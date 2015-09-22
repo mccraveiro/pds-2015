@@ -1,0 +1,21 @@
+pt:
+  activerecord:
+    attributes:
+      user:
+        name: "Nome completo"
+        email: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirme sua senha"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "Por favor, informe seu %{attribute}."
+            email:
+              blank: "Por favor, informe seu %{attribute}."
+            password:
+              blank: "Por favor, informe sua %{attribute}."
+            password_confirmation:
+              blank: "Por favor, confirme sua senha."
+              confirmation: "A confirmação de senha deve ser igual a sua senha."
