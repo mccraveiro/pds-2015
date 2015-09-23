@@ -1,4 +1,4 @@
-[![Stories in Ready](https://badge.waffle.io/mccraveiro/pds-2015.png?label=ready&title=Ready)](https://waffle.io/mccraveiro/pds-2015)
+[![Circle CI](https://circleci.com/gh/mccraveiro/pds-2015.svg?style=svg)](https://circleci.com/gh/mccraveiro/pds-2015) [![Stories in Ready](https://badge.waffle.io/mccraveiro/pds-2015.png?label=ready&title=Ready)](https://waffle.io/mccraveiro/pds-2015)
 # README
 
 * **Ruby version required**
