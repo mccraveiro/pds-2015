@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
     # If user's login doesn't work, send them back to the login form.
-      #flash[:error] = "Erro: Login não realizado"
+      flash[:error] = "Erro: Login não realizado"
       redirect_to '/login'
     end
   end
@@ -23,6 +23,8 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to '/login'
   end
+
+  private
 
   def session_params
     params.require(:session).permit(:email, :password)
