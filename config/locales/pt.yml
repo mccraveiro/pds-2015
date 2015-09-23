@@ -14,6 +14,7 @@ pt:
               blank: "Por favor, informe seu %{attribute}."
             email:
               blank: "Por favor, informe seu %{attribute}."
+              invalid: "O email inserido não possui um formato válido."
             password:
               blank: "Por favor, informe sua %{attribute}."
             password_confirmation:
