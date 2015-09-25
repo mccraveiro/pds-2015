@@ -67,6 +67,10 @@ header {
     margin-top: 0 !important;
   }
 
+  .form-group {
+    max-width: 20%;
+  }
+
   .form-group ~ .form-group {
     margin-left: -5px;
   }
@@ -74,12 +78,13 @@ header {
 
 @media(max-width: 768px) {
   .toolbar {
-    height: 245px;
+    height: 300px;
     padding-top: 5px;
   }
 
   .form-group {
     width: 100% !important;
+    max-width: 100% !important;
     margin-left: 0 !important;
   }
 }

@@ -1,47 +1,49 @@
 <form class="form-inline">
   <div class="form-group">
     <select class="form-control selectpicker" id="filter-year" title="Cidade">
-      <option selected="selected">Campinas, SP</option>
+      <option value="Campinas" selected="selected">Campinas, SP</option>
     </select>
   </div>
   <div class="form-group">
     <select class="form-control selectpicker" id="filter-year" title="Ano">
-      <option>2014</option>
+      <option value="2014" selected="selected">2014</option>
     </select>
   </div>
   <div class="form-group">
     <select class="form-control selectpicker" id="filter-month" title="Mês">
-      <option>Todos</option>
-      <option>Janeiro</option>
-      <option>Fevereiro</option>
-      <option>Março</option>
-      <option>Abril</option>
-      <option>Maio</option>
-      <option>Junho</option>
-      <option>Julho</option>
-      <option>Agosto</option>
-      <option>Setembro</option>
-      <option>Outubro</option>
-      <option>Novembro</option>
-      <option>Dezembro</option>
+      <option value="">Todos</option>
+      <option value="01">Janeiro</option>
+      <option value="02">Fevereiro</option>
     </select>
   </div>
   <div class="form-group">
     <select class="form-control selectpicker" id="filter-domain" title="Domínio">
-      <option>Dominio A</option>
-      <option>Dominio B</option>
-      <option>Dominio C</option>
-      <option>Dominio D</option>
-      <option>Dominio E</option>
+      <optgroup label="Domínio">
+        <option value="">Todos</option>
+        <% @domains.each do |domain| %>
+          <option value="<%= domain.value %>"><%= domain.value %></option>
+        <% end %>
+      </optgroup>
     </select>
   </div>
   <div class="form-group">
     <select class="form-control selectpicker" id="filter-subdomain" title="Subdomínio">
-      <option>Subdominio A</option>
-      <option>Subdominio B</option>
-      <option>Subdominio C</option>
-      <option>Subdominio D</option>
-      <option>Subdominio E</option>
+      <optgroup label="Subdomínio">
+        <option value="">Todos</option>
+        <% @subdomains.each do |subdomain| %>
+          <option value="<%= subdomain.value %>"><%= subdomain.value %></option>
+        <% end %>
+      </optgroup>
+    </select>
+  </div>
+  <div class="form-group">
+    <select class="form-control selectpicker" id="filter-nature" title="Natureza">
+      <optgroup label="Natureza">
+        <option value="">Todas</option>
+        <% @natures.each do |nature| %>
+          <option value="<%= nature.value %>"><%= nature.value %></option>
+        <% end %>
+      </optgroup>
     </select>
   </div>
 </form>
