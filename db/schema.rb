@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923190652) do
+ActiveRecord::Schema.define(version: 20151002205605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(version: 20150923190652) do
 
   create_table "subdomains", force: :cascade do |t|
     t.string "value"
+  end
+
+  create_table "user_history", force: :cascade do |t|
+    t.integer  "id_user"
+    t.integer  "id_domain"
+    t.integer  "id_subdomain"
+    t.integer  "id_nature"
+    t.string   "city"
+    t.string   "mounth"
+    t.string   "year"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.boolean  "favorite"
   end
 
   create_table "users", force: :cascade do |t|
