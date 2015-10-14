@@ -1,4 +1,6 @@
 require 'savon'
+require 'nokogiri'
+require 'open-uri'
 
 class MainController < ApplicationController
   def index
@@ -35,10 +37,20 @@ class MainController < ApplicationController
       [month]
     end
 
+    expenses = []
+
     months.map { |m|
       body = call_api(2, city, year, m, domain, subdomain, nature)
-      body[:get_lista_despesa_response][:get_lista_despesa_result]
+      #body[:get_lista_despesa_response][:get_lista_despesa_result]
+
+      data = Nokogiri::XML(body[:get_lista_despesa_response][:get_lista_despesa_result])
+      d = data.xpath('//Despesa').each do |link|
+        c = link.children
+        expenses << Expense.new(c[1].content.strip ,c[3].content.strip ,c[5].content.strip ,c[7].content.strip ,c[9].content.strip ,c[11].content.strip ,c[13].content.strip ,c[15].content.strip ,c[17].content.strip ,c[19].content.strip ,c[21].content.strip ,c[23].content.strip ,c[25].content.strip ,c[27].content.strip ,c[29].content.strip ,c[31].content.strip ,c[33].content.strip ,c[35].content.strip ,c[37].content.strip ,c[39].content.strip ,c[41].content.strip ,c[43].content.strip)
+      end
     }
+
+    expenses
   end
 
   private
