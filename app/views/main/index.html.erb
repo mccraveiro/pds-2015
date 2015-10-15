@@ -14,88 +14,23 @@
         <table class="table">
           <thead>
             <tr>
-              <th colspan="2"></th>
-              <th class="text-center">Janeiro</th>
-              <th class="text-center">Fevereiro</th>
-              <th class="text-center">Março</th>
-              <th class="text-center">Abril</th>
-              <th class="text-center">Maio</th>
-              <th class="text-center">Junho</th>
-              <th class="text-center">Julho</th>
-              <th class="text-center">Agosto</th>
-              <th class="text-center">Setembro</th>
-              <th class="text-center">Outubro</th>
-              <th class="text-center">Novembro</th>
-              <th class="text-center">Dezembro</th>
-              <th class="text-center">Total</th>
+              <% @months.each do |month| %>
+                <% if params[:month] == '' || month.value == params[:month] %>
+                  <th class="text-center"><%= month.name %></th>
+                <% end %>
+              <% end %>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th class="text-center text-nowrap vcenter" rowspan="2" scope="row">Dominio A</th>
-              <th class="text-center text-nowrap" scope="row">Subdominio A</th>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-            </tr>
-            <tr>
-              <th class="text-center text-nowrap" scope="row">Subdominio B</th>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-            </tr>
-            <tr>
-              <th class="text-center text-nowrap vcenter" rowspan="2" scope="row">Dominio B</th>
-              <th class="text-center text-nowrap" scope="row">Subdominio A</th>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-            </tr>
-            <tr>
-              <th class="text-center text-nowrap" scope="row">Subdominio B</th>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
-              <td class="text-center text-nowrap">R$ 0,00</td>
+              <tr>
+                <% @totais.each do |total| %>
+                  <td class="text-center text-nowrap">R$ <%= total %></td>
+                <% end %>
+                <% if @totais.count > 1 %>
+                  <td class="text-center text-nowrap">R$ <%= @total %></td>
+                <% end %>
+              </tr>
             </tr>
           </tbody>
         </table>

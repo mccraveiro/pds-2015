@@ -1,12 +1,20 @@
+require 'ostruct'
 require 'savon'
 require 'nokogiri'
 require 'open-uri'
 
 class MainController < ApplicationController
   def index
+    @months = [
+      OpenStruct.new({ name: 'January', value: '01'}),
+      OpenStruct.new({ name: 'Fevereiro', value: '02'})
+    ]
     @domains = Domain.order(:value).all
     @subdomains = Subdomain.order(:value).all
     @natures = Nature.order(:value).all
+
+    @totais = get_total_despesa params[:city], params[:year], params[:month], params[:domain], params[:subdomain], params[:nature]
+    @total = @totais.inject(0) { |sum, n| sum + n.to_f }
   end
 
   def get_total_despesa(city = "", year = "", month = "", domain = "", subdomain = "", nature = "")
