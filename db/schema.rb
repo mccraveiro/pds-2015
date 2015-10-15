@@ -29,16 +29,16 @@ ActiveRecord::Schema.define(version: 20151002205605) do
   end
 
   create_table "user_history", force: :cascade do |t|
-    t.integer  "id_user"
-    t.integer  "id_domain"
-    t.integer  "id_subdomain"
-    t.integer  "id_nature"
+    t.integer  "user_id"
+    t.integer  "domain_id"
+    t.integer  "subdomain_id"
+    t.integer  "nature_id"
     t.string   "city"
-    t.string   "mounth"
+    t.string   "month"
     t.string   "year"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.boolean  "favorite"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "favorite",     default: false
   end
 
   create_table "users", force: :cascade do |t|
