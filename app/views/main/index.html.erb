@@ -48,8 +48,8 @@
             <thead>
               <tr>
                 <th class="text-center">Orgão</th>
-                <th class="text-center">Domínio</th>
                 <th class="text-center">Subdomínio</th>
+                <th class="text-center">Programa</th>
                 <th class="text-center">Natureza</th>
                 <th class="text-center">Valor</th>
               </tr>
@@ -60,8 +60,8 @@
                   <% @despesas.each do |despesa| %>
                     <tr>
                       <td class="text-center text-nowrap"> <%= despesa.descricaoOrgao %></td>
-                      <td class="text-center text-nowrap"> <%= despesa.descricaoDominio %></td>
                       <td class="text-center text-nowrap"> <%= despesa.descricaoSubDominio %></td>
+                      <td class="text-center text-nowrap"> <%= despesa.descricaoPrograma %></td>
                       <td class="text-center text-nowrap"> <%= despesa.descricaoNatureza %></td>
                       <td class="text-center text-nowrap"> R$ <%= despesa.valor %></td>
                     </tr>
