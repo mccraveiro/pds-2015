@@ -6,7 +6,7 @@ require 'open-uri'
 class MainController < ApplicationController
   def index
     @months = [
-      OpenStruct.new({ name: 'January', value: '01'}),
+      OpenStruct.new({ name: 'Janeiro', value: '01'}),
       OpenStruct.new({ name: 'Fevereiro', value: '02'})
     ]
     @domains = Domain.order(:value).all
@@ -15,6 +15,11 @@ class MainController < ApplicationController
 
     @totais = get_total_despesa params[:city], params[:year], params[:month], params[:domain], params[:subdomain], params[:nature]
     @total = @totais.inject(0) { |sum, n| sum + n.to_f }
+
+    if current_user
+      @despesas = get_lista_despesa params[:city], params[:year], params[:month], params[:domain], params[:subdomain], params[:nature]
+      puts "Getting all expenses"
+    end
   end
 
   def get_total_despesa(city = "", year = "", month = "", domain = "", subdomain = "", nature = "")
@@ -45,16 +50,40 @@ class MainController < ApplicationController
       [month]
     end
 
-    expenses = []
+    expenses = Array.new
 
     months.map { |m|
       body = call_api(2, city, year, m, domain, subdomain, nature)
-      #body[:get_lista_despesa_response][:get_lista_despesa_result]
+      #puts body[:get_lista_despesa_response][:get_lista_despesa_result]
 
       data = Nokogiri::XML(body[:get_lista_despesa_response][:get_lista_despesa_result])
       d = data.xpath('//Despesa').each do |link|
         c = link.children
-        expenses << Expense.new(c[1].content.strip ,c[3].content.strip ,c[5].content.strip ,c[7].content.strip ,c[9].content.strip ,c[11].content.strip ,c[13].content.strip ,c[15].content.strip ,c[17].content.strip ,c[19].content.strip ,c[21].content.strip ,c[23].content.strip ,c[25].content.strip ,c[27].content.strip ,c[29].content.strip ,c[31].content.strip ,c[33].content.strip ,c[35].content.strip ,c[37].content.strip ,c[39].content.strip ,c[41].content.strip ,c[43].content.strip)
+        e = Expense.new
+        e.codigo = c[1].content.strip
+        e.codigoMunicipio = c[3].content.strip
+        e.codigoUF = c[5].content.strip
+        e.codigoPais = c[7].content.strip
+        e.codigoOrgao = c[9].content.strip
+        e.codigoPrograma = c[11].content.strip
+        e.codigoDominio = c[13].content.strip
+        e.codigoSubDominio = c[15].content.strip
+        e.codigoFonte = c[17].content.strip
+        e.codigoNatureza = c[19].content.strip
+        e.codigoTipoLicitacao = c[21].content.strip
+        e.dataAno = c[23].content.strip
+        e.dataMes = c[25].content.strip
+        e.valor = c[27].content.strip
+        e.descricaoOrgao = c[29].content.strip
+        e.cpfCnpjCredor = c[31].content.strip
+        e.descricaoPrograma = c[33].content.strip
+        e.descricaoDominio = c[35].content.strip
+        e.descricaoSubDominio = c[37].content.strip
+        e.descricaoFonte = c[39].content.strip
+        e.descricaoNatureza = c[41].content.strip
+        e.descricaoTipoLicitacao = c[43].content.strip
+
+        expenses.push(e)
       end
     }
 
