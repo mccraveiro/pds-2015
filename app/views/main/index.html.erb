@@ -15,9 +15,12 @@
           <thead>
             <tr>
               <% @months.each do |month| %>
-                <% if params[:month] == '' || month.value == params[:month] %>
+                <% if !params[:month].present? || month.value == params[:month] %>
                   <th class="text-center"><%= month.name %></th>
                 <% end %>
+              <% end %>
+              <% if @totais.count > 1 %>
+                <th class="text-center">Total</th>
               <% end %>
             </tr>
           </thead>
@@ -41,37 +44,24 @@
 <% if current_user %>
   <div class="container-fluid">
     <div class="col-xs-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">Listagem de gastos</div>
-        <div class="table-responsive">
-          <table class="table">
-            <thead>
-              <tr>
-                <th class="text-center">Orgão</th>
-                <th class="text-center">Subdomínio</th>
-                <th class="text-center">Programa</th>
-                <th class="text-center">Natureza</th>
-                <th class="text-center">Valor</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <tr>
-                  <% @despesas.each do |despesa| %>
-                    <tr>
-                      <td class="text-center text-nowrap"> <%= despesa.descricaoOrgao %></td>
-                      <td class="text-center text-nowrap"> <%= despesa.descricaoSubDominio %></td>
-                      <td class="text-center text-nowrap"> <%= despesa.descricaoPrograma %></td>
-                      <td class="text-center text-nowrap"> <%= despesa.descricaoNatureza %></td>
-                      <td class="text-center text-nowrap"> R$ <%= despesa.valor %></td>
-                    </tr>
-                  <% end %>
-                </tr>
-              </tr>
-            </tbody>
-          </table>
+      <h2 class="header-gastos text-muted">Discriminação dos gastos</h2>
+      <% @despesas.each do |despesa| %>
+        <div class="panel panel-default despesa">
+          <div class="panel-body">
+            <p><strong>Orgão:</strong> <%= despesa.descricaoOrgao %></td>
+            <p><strong>Domínio:</strong> <%= despesa.descricaoDominio %></td>
+            <p><strong>Subdomínio:</strong> <%= despesa.descricaoSubDominio %></td>
+            <p><strong>Programa:</strong> <%= despesa.descricaoPrograma %></td>
+            <p><strong>Natureza:</strong> <%= despesa.descricaoNatureza %></td>
+            <p><strong>Tipo de Licitação:</strong> <%= despesa.descricaoTipoLicitacao %></td>
+            <p><strong>Fonte:</strong> <%= despesa.descricaoFonte %></td>
+            <p><strong>Valor:</strong> R$ <%= despesa.valor %></td>
+          </div>
         </div>
-      </div>
+        <tr>
+
+        </tr>
+      <% end %>
     </div>
   </div>
 <% end %>

@@ -1,4 +1,4 @@
-$(document).ready(function () {
+function ready () {
   $('.selectpicker').selectpicker({
     style: 'btn-default btn-lg',
     width: '100%'
@@ -7,4 +7,7 @@ $(document).ready(function () {
   $('.selectpicker').change(function() {
     $('#filter-form').submit();
   });
-});
+}
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

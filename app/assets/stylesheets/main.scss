@@ -125,3 +125,25 @@ table {
 .footer {
   line-height: 2em;
 }
+
+.despesa {
+  padding-bottom: 0 !important;
+  margin-top: 1em !important;
+  margin-bottom: 1em !important;
+}
+
+.despesa p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.despesa p strong {
+  width: 130px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.header-gastos {
+  font-weight: 300;
+  margin-bottom: 0.8em;
+}
