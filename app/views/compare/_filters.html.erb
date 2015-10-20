@@ -1,19 +1,22 @@
 <div class="form-group">
-  <select class="form-control selectpicker" name="city" id="filter-city" title="Cidade">
+  <strong>Busca <%= index %></strong>
+</div>
+<div class="form-group">
+  <select class="form-control selectpicker" name="city[<%= index %>]" id="filter-city" title="Cidade">
     <option value="Campinas" selected="selected">Campinas, SP</option>
   </select>
 </div>
 <div class="form-group">
-  <select class="form-control selectpicker" name="year" id="filter-year" title="Ano">
+  <select class="form-control selectpicker" name="year[<%= index %>]" id="filter-year" title="Ano">
     <option value="2014" selected="selected">2014</option>
   </select>
 </div>
 <div class="form-group">
-  <select class="form-control selectpicker" name="month" id="filter-month" title="Mês">
+  <select class="form-control selectpicker" name="month[<%= index %>]" id="filter-month" title="Mês">
     <option value="">Todos</option>
     <% @months.each do |month| %>
       <option value="<%= month.value %>"
-        <% if params[:month] == month.value %>
+        <% if params[:month].present? && params[:month][index] == month.value %>
           selected="selected"
         <% end %>
       ><%= month.name %></option>
@@ -21,12 +24,12 @@
   </select>
 </div>
 <div class="form-group">
-  <select class="form-control selectpicker" name="domain" id="filter-domain" title="Domínio">
+  <select class="form-control selectpicker" name="domain[<%= index %>]" id="filter-domain" title="Domínio">
     <optgroup label="Domínio">
       <option value="">Todos</option>
       <% @domains.each do |domain| %>
         <option value="<%= domain.value %>"
-          <% if params[:domain] == domain.value %>
+          <% if params[:domain].present? && params[:domain][index] == domain.value %>
             selected="selected"
           <% end %>
         ><%= domain.value %></option>
@@ -35,12 +38,12 @@
   </select>
 </div>
 <div class="form-group">
-  <select class="form-control selectpicker" name="subdomain" id="filter-subdomain" title="Subdomínio">
+  <select class="form-control selectpicker" name="subdomain[<%= index %>]" id="filter-subdomain" title="Subdomínio">
     <optgroup label="Subdomínio">
       <option value="">Todos</option>
       <% @subdomains.each do |subdomain| %>
         <option value="<%= subdomain.value %>"
-          <% if params[:subdomain] == subdomain.value %>
+          <% if params[:subdomain].present? && params[:subdomain][index] == subdomain.value %>
             selected="selected"
           <% end %>
         ><%= subdomain.value %></option>
@@ -49,12 +52,12 @@
   </select>
 </div>
 <div class="form-group">
-  <select class="form-control selectpicker" name="nature" id="filter-nature" title="Natureza">
+  <select class="form-control selectpicker" name="nature[<%= index %>]" id="filter-nature" title="Natureza">
     <optgroup label="Natureza">
       <option value="">Todas</option>
       <% @natures.each do |nature| %>
         <option value="<%= nature.value %>"
-          <% if params[:nature] == nature.value %>
+          <% if params[:nature].present? && params[:nature][index] == nature.value %>
             selected="selected"
           <% end %>
         ><%= nature.value %></option>

@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Resultado <%= index %></div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <% @months.each do |month| %>
+            <% if !(params[:month].present? && params[:month][index].present?) || month.value == params[:month][index] %>
+              <th class="text-center"><%= month.name %></th>
+            <% end %>
+          <% end %>
+          <% if @totais[index].count > 1 %>
+            <th class="text-center">Total</th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <tr>
+            <% @totais[index].each do |total| %>
+              <td class="text-center text-nowrap">R$ <%= total %></td>
+            <% end %>
+            <% if @totais[index].count > 1 %>
+              <td class="text-center text-nowrap">R$ <%= @total[index] %></td>
+            <% end %>
+          </tr>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

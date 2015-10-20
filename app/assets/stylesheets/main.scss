@@ -55,6 +55,12 @@ header {
   background-color: white;
   color: black;
 
+  .col-xs-12 {
+    height: 44px;
+    display: flex;
+    flex-direction: row;
+  }
+
   .btn.dropdown-toggle {
     border: 0px !important;
   }
@@ -68,7 +74,13 @@ header {
   }
 
   .form-group {
-    max-width: 20%;
+    flex: 1;
+
+    strong {
+      line-height: 44px;
+      vertical-align: middle;
+      font-size: 16px;
+    }
   }
 
   .form-group ~ .form-group {
@@ -76,16 +88,41 @@ header {
   }
 }
 
+.toolbar ~ .toolbar {
+  height: 45px;
+  border-top: 1px solid rgba(0, 0, 0, 0.26);
+}
+
 @media(max-width: 768px) {
+  .toolbar ~ .toolbar,
   .toolbar {
     height: 300px;
     padding-top: 5px;
+
+    .col-xs-12 {
+      height: 295px;
+      flex-direction: column;
+    }
+  }
+
+  .toolbar-compare ~ .toolbar-compare,
+  .toolbar-compare {
+    height: 350px !important;
+    padding-top: 5px;
+
+    .col-xs-12 {
+      height: 345px;
+      flex-direction: column;
+    }
   }
 
   .form-group {
-    width: 100% !important;
-    max-width: 100% !important;
+    height: 44px;
     margin-left: 0 !important;
+
+    strong {
+      padding: 0 16px;
+    }
   }
 }
 

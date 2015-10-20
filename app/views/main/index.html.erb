@@ -1,10 +1,12 @@
 <header>
   <%= render "header" %>
-  <div class="container-fluid toolbar">
-    <div class="col-xs-12">
-      <%= render "filters" %>
+  <form action="/" method="GET" class="form-inline" id="filter-form">
+    <div class="container-fluid toolbar">
+      <div class="col-xs-12">
+        <%= render "filters" %>
+      </div>
     </div>
-  </div>
+  </form>
 </header>
 <div class="container-fluid">
   <div class="col-xs-12">
@@ -58,14 +60,14 @@
             <p><strong>Valor:</strong> R$ <%= despesa.valor %></td>
           </div>
         </div>
-        <tr>
-
-        </tr>
       <% end %>
     </div>
   </div>
 <% end %>
 <div class="container-fluid footer">
+  <div class="col-xs-12 text-center text-muted">
+    <a href="/compare">Compare suas buscas</a>
+  </div>
   <% if !current_user %>
     <div class="col-xs-12 text-center text-muted">
       <a href="/cadastre-se">Cadastre-se</a> para acessar os dados granulares e salvar suas consultas

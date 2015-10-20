@@ -1,0 +1,29 @@
+<header>
+  <%= render "header" %>
+  <form action="/compare" method="GET" class="form-inline" id="filter-form">
+    <div class="container-fluid toolbar toolbar-compare">
+      <div class="col-xs-12">
+        <%= render "filters", index: "1" %>
+      </div>
+    </div>
+    <div class="container-fluid toolbar toolbar-compare">
+      <div class="col-xs-12">
+        <%= render "filters", index: "2" %>
+      </div>
+    </div>
+  </form>
+</header>
+<div class="container-fluid">
+  <div class="col-xs-12">
+    <%= render "panel", index: "1" %>
+    <%= render "panel", index: "2" %>
+  </div>
+</div>
+<div class="container-fluid footer">
+  <% if !current_user %>
+    <div class="col-xs-12 text-center text-muted">
+      <a href="/cadastre-se">Cadastre-se</a> para acessar os dados granulares e salvar suas consultas
+    </div>
+  <% end %>
+  <%= render "copyright" %>
+</div>
