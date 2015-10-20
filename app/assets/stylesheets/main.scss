@@ -86,6 +86,11 @@ header {
   .form-group ~ .form-group {
     margin-left: -5px;
   }
+
+  .form-group:last-child .dropdown-menu {
+    right: 0 !important;
+    left: auto !important;
+  }
 }
 
 .toolbar ~ .toolbar {
@@ -102,6 +107,10 @@ header {
     .col-xs-12 {
       height: 295px;
       flex-direction: column;
+    }
+
+    .form-group:last-child .dropdown-menu {
+      left: 0 !important;
     }
   }
 
