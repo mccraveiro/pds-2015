@@ -18,6 +18,7 @@ class MainController < ApplicationController
 
     if current_user
       @despesas = get_lista_despesa params[:city], params[:year], params[:month], params[:domain], params[:subdomain], params[:nature], params[:first]
+      puts "First = " + @first.to_s
       puts "Getting all expenses"
     end
   end
@@ -52,6 +53,8 @@ class MainController < ApplicationController
 
     first = 1 if first.nil?
     elems = 10
+
+    @first = first
 
     expenses = Array.new
 

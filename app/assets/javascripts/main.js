@@ -7,6 +7,18 @@ function ready () {
   $('.selectpicker').change(function() {
     $('#filter-form').submit();
   });
+
+  $("#pagPrevious").click(function(){
+    var x = parseInt($('#filter-form').find('input[name="first"]').val()) - 10;
+    $('#filter-form').find('input[name="first"]').val(x.toString());
+    $('#filter-form').submit();
+  });
+
+  $("#pagNext").click(function(){
+    var x = parseInt($('#filter-form').find('input[name="first"]').val()) + 10;
+    $('#filter-form').find('input[name="first"]').val(x.toString());
+    $('#filter-form').submit();
+  });
 }
 
 $(document).ready(ready);
