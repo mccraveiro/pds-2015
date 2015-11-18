@@ -46,7 +46,7 @@ class MainController < ApplicationController
     year = '2014' if year.blank?
 
     months = if month.blank?
-      ['01', '02']#, '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '']
+      ['01', '02', '03']#, '04', '05', '06', '07', '08', '09', '10', '11', '12', '']
     else
       [month]
     end
@@ -54,15 +54,18 @@ class MainController < ApplicationController
     first = 1 if first.nil?
     elems = 10
 
+    first = first.to_i
+
     @first = first
 
     expenses = Array.new
 
+    totalElems = 0
+    totalExpensesInPage = 0
+
     months.map { |m|
       body = call_api(2, city, year, m, domain, subdomain, nature, first, elems)
       #puts body[:get_lista_despesa_response][:get_lista_despesa_result]
-
-      elems = 10
 
       data = Nokogiri::XML(body[:get_lista_despesa_response][:get_lista_despesa_result])
       d = data.xpath('//Despesa').each do |link|
@@ -94,8 +97,19 @@ class MainController < ApplicationController
         expenses.push(e)
       end
 
-      break if expenses.size >= 10
-      elems = elems - expenses.size if expenses.size < 10
+      d = data.xpath('//TotalCount')
+      countCurrentMonth = d.children[0].content.to_i
+      totalExpensesInPage = totalExpensesInPage + expenses.size
+      totalElems = totalElems + countCurrentMonth
+
+      if totalExpensesInPage >= 10
+        break
+      elsif totalExpensesInPage > 0
+        elems = 10 - totalExpensesInPage
+        first = 1
+      else
+        first = first - countCurrentMonth
+      end
     }
 
     expenses

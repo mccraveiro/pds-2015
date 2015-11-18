@@ -50,6 +50,7 @@
       <% @despesas.each do |despesa| %>
         <div class="panel panel-default despesa">
           <div class="panel-body">
+            <p><strong>Mês/Ano:</strong> <%= despesa.dataMes %> / <%= despesa.dataAno %></td>
             <p><strong>Orgão:</strong> <%= despesa.descricaoOrgao %></td>
             <p><strong>Domínio:</strong> <%= despesa.descricaoDominio %></td>
             <p><strong>Subdomínio:</strong> <%= despesa.descricaoSubDominio %></td>

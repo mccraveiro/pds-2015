@@ -5,18 +5,19 @@ function ready () {
   });
 
   $('.selectpicker').change(function() {
+    $('#filter-form').find('input[name="first"]').val(1);
     $('#filter-form').submit();
   });
 
   $("#pagPrevious").click(function(){
-    var x = parseInt($('#filter-form').find('input[name="first"]').val()) - 10;
-    $('#filter-form').find('input[name="first"]').val(x.toString());
+    var x = parseInt($('#filter-first').val()) - 10;
+    $('#filter-form').find('input[name="first"]').val(x);
     $('#filter-form').submit();
   });
 
   $("#pagNext").click(function(){
-    var x = parseInt($('#filter-form').find('input[name="first"]').val()) + 10;
-    $('#filter-form').find('input[name="first"]').val(x.toString());
+    var x = parseInt($('#filter-first').val()) + 10;
+    $('#filter-form').find('input[name="first"]').val(x);
     $('#filter-form').submit();
   });
 }
