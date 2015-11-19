@@ -50,6 +50,7 @@
       <% @despesas.each do |despesa| %>
         <div class="panel panel-default despesa">
           <div class="panel-body">
+            <p><strong>Mês/Ano:</strong> <%= despesa.dataMes %> / <%= despesa.dataAno %></td>
             <p><strong>Orgão:</strong> <%= despesa.descricaoOrgao %></td>
             <p><strong>Domínio:</strong> <%= despesa.descricaoDominio %></td>
             <p><strong>Subdomínio:</strong> <%= despesa.descricaoSubDominio %></td>
@@ -62,6 +63,15 @@
         </div>
       <% end %>
     </div>
+  </div>
+  <div class="arrows">
+    <% if @first.to_i > 1 %>
+    <input type="button" value="<" id="pagPrevious"></input>
+    <% end %>
+
+    <% if @despesas.size == 10 %>
+    <input type="button" value=">" id="pagNext"></input>
+    <% end %>
   </div>
 <% end %>
 <div class="container-fluid footer">

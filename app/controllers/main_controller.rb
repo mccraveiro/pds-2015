@@ -17,7 +17,8 @@ class MainController < ApplicationController
     @total = @totais.inject(0) { |sum, n| sum + n.to_f }
 
     if current_user
-      @despesas = get_lista_despesa params[:city], params[:year], params[:month], params[:domain], params[:subdomain], params[:nature]
+      @despesas = get_lista_despesa params[:city], params[:year], params[:month], params[:domain], params[:subdomain], params[:nature], params[:first]
+      puts "First = " + @first.to_s
       puts "Getting all expenses"
     end
   end
@@ -34,26 +35,36 @@ class MainController < ApplicationController
     end
 
     months.map { |m|
-      body = call_api(1, city, year, m, domain, subdomain, nature)
+      body = call_api(1, city, year, m, domain, subdomain, nature, 0, 0)
       body[:get_total_despesa_response][:get_total_despesa_result]
     }
   end
 
-  def get_lista_despesa(city = "", year = "", month = "", domain = "", subdomain = "", nature = "")
+  def get_lista_despesa(city = "", year = "", month = "", domain = "", subdomain = "", nature = "", first = nil)
 
     city = 'Campinas' if city.blank?
     year = '2014' if year.blank?
 
     months = if month.blank?
-      ['01', '02']#, '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '']
+      ['01', '02', '03']#, '04', '05', '06', '07', '08', '09', '10', '11', '12', '']
     else
       [month]
     end
 
+    first = 1 if first.nil?
+    elems = 10
+
+    first = first.to_i
+
+    @first = first
+
     expenses = Array.new
 
+    totalElems = 0
+    totalExpensesInPage = 0
+
     months.map { |m|
-      body = call_api(2, city, year, m, domain, subdomain, nature)
+      body = call_api(2, city, year, m, domain, subdomain, nature, first, elems)
       #puts body[:get_lista_despesa_response][:get_lista_despesa_result]
 
       data = Nokogiri::XML(body[:get_lista_despesa_response][:get_lista_despesa_result])
@@ -85,30 +96,53 @@ class MainController < ApplicationController
 
         expenses.push(e)
       end
+
+      d = data.xpath('//TotalCount')
+      countCurrentMonth = d.children[0].content.to_i
+      totalExpensesInPage = totalExpensesInPage + expenses.size
+      totalElems = totalElems + countCurrentMonth
+
+      if totalExpensesInPage >= 10
+        break
+      elsif totalExpensesInPage > 0
+        elems = 10 - totalExpensesInPage
+        first = 1
+      else
+        first = first - countCurrentMonth
+      end
     }
 
     expenses
   end
 
   private
-  def call_api(f, city, year, month, domain, subdomain, nature)
+  def call_api(f, city, year, month, domain, subdomain, nature, first, elems)
     # create a client for the service
     client = Savon.client(wsdl: 'http://transparenciaws.elasticbeanstalk.com/TransparenciaWS.asmx?WSDL')
 
-    fun = if f == 1
-      :get_total_despesa
-    else
-      :get_lista_despesa
-    end
+    puts "call_api f = " + f.to_s + " Month = " + month + " First = " + first.to_s + " Elems = " + elems.to_s
 
-    response = client.call(fun, message: {
-      wNomeCidade: city,
-      wAno: year,
-      wMes: month,
-      wDominio: domain,
-      wSubDominio: subdomain,
-      wNatureza: nature
-    })
+    if f == 1
+      response = client.call(:get_total_despesa, message: {
+        wNomeCidade: city,
+        wAno: year,
+        wMes: month,
+        wDominio: domain,
+        wSubDominio: subdomain,
+        wNatureza: nature
+      })
+    else
+      response = client.call(:get_lista_despesa, message: {
+        wNomeCidade: city,
+        wAno: year,
+        wMes: month,
+        wDominio: domain,
+        wSubDominio: subdomain,
+        wNatureza: nature,
+        wInicioRegistros: first.to_s,
+        wQuantidadeRegistros: elems
+      })
+    end
 
     response.body
   end
