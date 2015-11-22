@@ -20,6 +20,20 @@ function ready () {
     $('#filter-form').find('input[name="first"]').val(x);
     $('#filter-form').submit();
   });
+
+  $('.float-button').click(function() {
+    $.post('/add-favorite', {
+      user_id: $('#user_id').val(),
+      domain: $('#filter-domain').val(),
+      subdomain: $('#filter-subdomain').val(),
+      nature: $('#filter-nature').val(),
+      city: $('#filter-city').val(),
+      month: $('#filter-month').val(),
+      year: $('#filter-year').val()
+    }, function (data) {
+      alert('Favorito adicionado com sucesso!');
+    });
+  });
 }
 
 $(document).ready(ready);

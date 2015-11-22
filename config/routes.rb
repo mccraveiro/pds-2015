@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   get 'sair' => 'sessions#destroy'
   get 'compare' => 'compare#index'
+  get 'favorites' => 'favorites#index'
+  post 'add-favorite' => 'favorites#new'
+  get 'remove-favorite/:id' => 'favorites#delete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
