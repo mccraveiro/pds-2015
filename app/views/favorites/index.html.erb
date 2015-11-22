@@ -1,0 +1,67 @@
+<header>
+  <%= render "main/header" %>
+</header>
+<% if current_user %>
+  <div class="container-fluid">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Favoritos</div>
+        <% if @favorites.empty? %>
+          <p class="text-muted text-center">Você ainda não possui nenhum favorito.<br>Ao fazer uma busca, clique no coração para adicionar aos favoritos.</p>
+        <% else %>
+          <table style="width:96%;margin: 40px auto 0;">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Cidade</th>
+                <th>Ano</th>
+                <th>Mês</th>
+                <th>Domínio</th>
+                <th>Subdomínio</th>
+                <th>Natureza</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @favorites.each do |favorite| %>
+                <tr class="user-favorite-item">
+                  <td>
+                    <strong><%= favorite.created_at.strftime("%d/%m/%Y às %Hh%M") %></strong>
+                  </td>
+                  <td><%= favorite.city %></td>
+                  <td><%= favorite.year %></td>
+                  <td>
+                    <% @months.each do |month| %>
+                      <% if month.value == favorite.month %>
+                        <%= month.name %>
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td><%= favorite.domain %></td>
+                  <td><%= favorite.subdomain %></td>
+                  <td><%= favorite.nature %></td>
+                  <td class="text-right">
+                    <a href="/?city=<%= Rack::Utils.escape(favorite.city) %>&year=<%= Rack::Utils.escape(favorite.year) %>&month=<%= Rack::Utils.escape(favorite.month) %>&domain=<%= Rack::Utils.escape(favorite.domain) %>&subdomain=<%= Rack::Utils.escape(favorite.subdomain) %>&nature=<%= Rack::Utils.escape(favorite.nature) %>">Visualizar</a>
+                  </td>
+                  <td class="text-right"><a href="/remove-favorite/<%= favorite.id %>">Excluir</a></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div class="container-fluid footer">
+  <div class="col-xs-12 text-center text-muted">
+    <a href="/">Voltar</a>
+  </div>
+  <% if !current_user %>
+    <div class="col-xs-12 text-center text-muted">
+      <a href="/cadastre-se">Cadastre-se</a> para acessar os dados granulares e salvar suas consultas
+    </div>
+  <% end %>
+  <%= render "main/copyright" %>
+</div>

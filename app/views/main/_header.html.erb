@@ -6,6 +6,8 @@
     <% if current_user %>
       <span>Logado como <%= current_user.name %></span>
       <span class="separator">|</span>
+      <a href="/favorites">Favoritos</a>
+      <span class="separator">|</span>
       <a href="/sair">SAIR</a>
     <% else %>
       <a href="/cadastre-se">CADASTRE-SE</a>

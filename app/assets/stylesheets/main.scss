@@ -98,6 +98,26 @@ header {
   border-top: 1px solid rgba(0, 0, 0, 0.26);
 }
 
+.float-button {
+  position: fixed;
+  background: red;
+  color: white;
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+  bottom: 40px;
+  right: 40px;
+  text-align: center;
+  line-height: 80px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.26);
+}
+
+.float-button svg {
+  width: 40px;
+  margin-top: 23px;
+}
+
 @media(max-width: 768px) {
   .toolbar ~ .toolbar,
   .toolbar {
