@@ -1,5 +1,21 @@
 function ready () {
 
+  $('.tabs .tab-links a').on('click', function(e)  {
+    var currentAttrValue = $(this).attr('href');
+
+    // Show/Hide Tabs
+    $('.tabs ' + currentAttrValue).show().fadeIn(400).siblings().hide();
+    // Change/remove current tab to active
+    $(this).parent('li').addClass('active').siblings().removeClass('active');
+
+    $(currentAttrValue).find('.ct-chart').each(function() {
+      this.__chartist__.update();
+    });
+
+    e.preventDefault();
+  });
+
+
   $('.selectpicker').selectpicker({
     style: 'btn-default btn-lg',
     width: '100%'
@@ -55,22 +71,31 @@ function buildChart(months, totais) {
   console.log(monthlabels);
   console.log(values);
 
-  var data = {
-    // A labels array that can contain any sort of values
+
+  var dataLineBar = {
     labels: monthlabels,
-    // Our series array that contains series objects or in this case series data arrays
-    series: [
-      values
-    ]
+    series: [values]
+  };
+  var optionsLine = {
+    low: 0,
+    onlyInteger: true,
+    height: '400px'
   };
 
-  var options = {
-    low: 0,
-    onlyInteger: true
+
+  var dataPie = {
+    series: values
   };
+  var options = {
+    onlyInteger: true,
+    height: '400px'
+  };
+
 
   // Create a new line chart object where as first parameter we pass in a selector
   // that is resolving to our chart container element. The Second parameter
   // is the actual data object.
-  new Chartist.Line('.ct-chart', data, options);
+  new Chartist.Line('#chart1', dataLineBar, optionsLine);
+  new Chartist.Pie('#chart2', dataPie, options);
+  new Chartist.Bar('#chart3', dataLineBar, options);
 }
