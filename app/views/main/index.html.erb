@@ -8,6 +8,7 @@
     </div>
   </form>
 </header>
+
 <div class="container-fluid">
   <div class="col-xs-12">
     <div class="panel panel-default">
@@ -43,6 +44,14 @@
     </div>
   </div>
 </div>
+
+<% if @totais.count > 1 %>
+  <div class="ct-chart ct-perfect-fourth chartist"></div>
+  <script type="text/javascript">
+    buildChart(<%= @months.to_json.html_safe %>, <%= @totais.to_json.html_safe %>);
+  </script>
+<% end %>
+
 <% if current_user %>
   <div class="container-fluid">
     <div class="col-xs-12">

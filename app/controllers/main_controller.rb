@@ -7,7 +7,9 @@ class MainController < ApplicationController
   def index
     @months = [
       OpenStruct.new({ name: 'Janeiro', value: '01'}),
-      OpenStruct.new({ name: 'Fevereiro', value: '02'})
+      OpenStruct.new({ name: 'Fevereiro', value: '02'}),
+      OpenStruct.new({ name: 'Março', value: '03'}),
+      OpenStruct.new({ name: 'Abril', value: '04'})
     ]
     @domains = Domain.order(:value).all
     @subdomains = Subdomain.order(:value).all
@@ -29,7 +31,7 @@ class MainController < ApplicationController
     year = '2014' if year.blank?
 
     months = if month.blank?
-      ['01', '02']#, '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '']
+      ['01', '02', '03', '04']#, '05', '06', '07', '08', '09', '10', '11', '12', '']
     else
       [month]
     end
@@ -46,7 +48,7 @@ class MainController < ApplicationController
     year = '2014' if year.blank?
 
     months = if month.blank?
-      ['01', '02', '03']#, '04', '05', '06', '07', '08', '09', '10', '11', '12', '']
+      ['01', '02', '03', '04']#, '05', '06', '07', '08', '09', '10', '11', '12', '']
     else
       [month]
     end
