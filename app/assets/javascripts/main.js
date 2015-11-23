@@ -1,4 +1,21 @@
 function ready () {
+
+  $('.tabs .tab-links a').on('click', function(e)  {
+    var currentAttrValue = $(this).attr('href');
+
+    // Show/Hide Tabs
+    $('.tabs ' + currentAttrValue).show().fadeIn(400).siblings().hide();
+    // Change/remove current tab to active
+    $(this).parent('li').addClass('active').siblings().removeClass('active');
+
+    $(currentAttrValue).find('.ct-chart').each(function() {
+      this.__chartist__.update();
+    });
+
+    e.preventDefault();
+  });
+
+
   $('.selectpicker').selectpicker({
     style: 'btn-default btn-lg',
     width: '100%'
@@ -38,3 +55,75 @@ function ready () {
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+
+function buildChart(months, totais, logged) {
+  var monthlabels = [];
+  var values = [];
+  var i = 0;
+
+  months.forEach(function(value) {
+    monthlabels.push(value.table.name);
+  });
+
+  totais.forEach(function(value) {
+    values.push({
+      "meta": monthlabels[i],
+      "value": value
+    });
+    i++;
+  });
+
+  console.log(monthlabels);
+  console.log(values);
+
+
+  var dataLineBar = {
+    labels: monthlabels,
+    series: [values]
+  };
+  if (logged) {
+    var optionsLine = {
+      low: 0,
+      onlyInteger: true,
+      height: '400px',
+      plugins: [
+        Chartist.plugins.tooltip()
+      ]
+    };
+  } else {
+    var optionsLine = {
+      low: 0,
+      onlyInteger: true,
+      height: '400px'
+    };
+  }
+
+
+  var dataPie = {
+    labels: monthlabels,
+    series: values
+  };
+  if (logged) {
+    var options = {
+      onlyInteger: true,
+      height: '400px',
+      plugins: [
+        Chartist.plugins.tooltip()
+      ]
+    };
+  } else {
+    var options = {
+      onlyInteger: true,
+      height: '400px'
+    };
+  }
+
+
+  // Create a new line chart object where as first parameter we pass in a selector
+  // that is resolving to our chart container element. The Second parameter
+  // is the actual data object.
+  new Chartist.Line('#chart1', dataLineBar, optionsLine);
+  new Chartist.Pie('#chart2', dataPie, options);
+  new Chartist.Bar('#chart3', dataLineBar, options);
+
+}

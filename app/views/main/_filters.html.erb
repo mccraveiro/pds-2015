@@ -62,5 +62,9 @@
     </optgroup>
   </select>
 </div>
-<input type="hidden" name="user_id" id="user_id" value="<%= current_user.id %>"/>
+<% if current_user %>
+  <input type="hidden" name="user_id" id="user_id" value="<%= current_user.id %>"/>
+<% else %>
+  <input type="hidden" name="user_id" id="user_id" value=""/>
+<% end %>
 <input type="hidden" name="first" id="filter-first" value="<%= @first.to_s %>"/>
