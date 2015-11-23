@@ -287,3 +287,21 @@ table {
         .tab.active {
             display:block;
         }
+
+#chartComparison .ct-series-a .ct-line,
+#chartComparison .ct-series-a .ct-point {
+  stroke: red;
+}
+
+#chartComparison .ct-series-b .ct-line,
+#chartComparison .ct-series-b .ct-point {
+  stroke: green;
+}
+
+#chartComparison {
+  height: 400px;
+}
+
+#chartContainer, #chartCol {
+  height: 525px;
+}
