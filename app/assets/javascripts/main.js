@@ -56,16 +56,21 @@ function ready () {
 $(document).ready(ready);
 $(document).on('page:load', ready);
 
-function buildChart(months, totais) {
+function buildChart(months, totais, logged) {
   var monthlabels = [];
   var values = [];
+  var i = 0;
 
   months.forEach(function(value) {
     monthlabels.push(value.table.name);
   });
 
   totais.forEach(function(value) {
-    values.push(value);
+    values.push({
+      "meta": monthlabels[i],
+      "value": value
+    });
+    i++;
   });
 
   console.log(monthlabels);
@@ -76,20 +81,42 @@ function buildChart(months, totais) {
     labels: monthlabels,
     series: [values]
   };
-  var optionsLine = {
-    low: 0,
-    onlyInteger: true,
-    height: '400px'
-  };
+  if (logged) {
+    var optionsLine = {
+      low: 0,
+      onlyInteger: true,
+      height: '400px',
+      plugins: [
+        Chartist.plugins.tooltip()
+      ]
+    };
+  } else {
+    var optionsLine = {
+      low: 0,
+      onlyInteger: true,
+      height: '400px'
+    };
+  }
 
 
   var dataPie = {
+    labels: monthlabels,
     series: values
   };
-  var options = {
-    onlyInteger: true,
-    height: '400px'
-  };
+  if (logged) {
+    var options = {
+      onlyInteger: true,
+      height: '400px',
+      plugins: [
+        Chartist.plugins.tooltip()
+      ]
+    };
+  } else {
+    var options = {
+      onlyInteger: true,
+      height: '400px'
+    };
+  }
 
 
   // Create a new line chart object where as first parameter we pass in a selector
@@ -98,4 +125,5 @@ function buildChart(months, totais) {
   new Chartist.Line('#chart1', dataLineBar, optionsLine);
   new Chartist.Pie('#chart2', dataPie, options);
   new Chartist.Bar('#chart3', dataLineBar, options);
+
 }

@@ -73,9 +73,15 @@
     </div>
   </div>
 
-  <script type="text/javascript">
-    buildChart(<%= @months.to_json.html_safe %>, <%= @totais.to_json.html_safe %>);
-  </script>
+  <% if current_user %>
+    <script type="text/javascript">
+      buildChart(<%= @months.to_json.html_safe %>, <%= @totais.to_json.html_safe %>, 1);
+    </script>
+  <% else %>
+    <script type="text/javascript">
+      buildChart(<%= @months.to_json.html_safe %>, <%= @totais.to_json.html_safe %>, 0);
+    </script>
+  <% end %>
 <% end %>
 
 <% if current_user %>

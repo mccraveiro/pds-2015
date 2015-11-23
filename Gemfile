@@ -34,6 +34,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'savon', '~> 2.10.0'
 
+gem 'chartist-rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
