@@ -1,10 +1,10 @@
 <div class="panel panel-default">
   <% if params[:nature].present? && params[:nature][index].present? %>
-    <div class="panel-heading">Busca <%= index %>: <%= params[:nature][index] %></div>
+    <div class="panel-heading">Busca <%= index %>: <%= Nature.where(value: params[:nature][index]).first.label %></div>
   <% elsif params[:subdomain].present? && params[:subdomain][index].present? %>
-    <div class="panel-heading">Busca <%= index %>: <%= params[:subdomain][index] %></div>
+    <div class="panel-heading">Busca <%= index %>: <%= Subdomain.where(value: params[:subdomain][index]).first.label %></div>
   <% elsif params[:domain].present? && params[:domain][index].present? %>
-    <div class="panel-heading">Busca <%= index %>: <%= params[:domain][index] %></div>
+    <div class="panel-heading">Busca <%= index %>: <%= Domain.where(value: params[:domain][index]).first.label %></div>
   <% else %>
     <div class="panel-heading">Busca <%= index %>: 2014</div>
   <% end %>
