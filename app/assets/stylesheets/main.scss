@@ -303,5 +303,24 @@ table {
 }
 
 #chartContainer, #chartCol {
-  height: 525px;
+  height: 475px;
+}
+
+.chartLabel {
+  display: inline-block;
+  font-size: 20px;
+}
+
+#square1 {
+  background-color: red;
+  height: 20px;
+  width: 20px;
+  margin-left: 30px;
+}
+
+#square2 {
+  background-color: green;
+  height: 20px;
+  width: 20px;
+  margin-left: 20px;
 }

@@ -12,18 +12,6 @@
   </select>
 </div>
 <div class="form-group">
-  <select class="form-control selectpicker" name="month[<%= index %>]" id="filter-month" title="Mês">
-    <option value="">Todos</option>
-    <% @months.each do |month| %>
-      <option value="<%= month.value %>"
-        <% if params[:month].present? && params[:month][index] == month.value %>
-          selected="selected"
-        <% end %>
-      ><%= month.name %></option>
-    <% end %>
-  </select>
-</div>
-<div class="form-group">
   <select class="form-control selectpicker" name="domain[<%= index %>]" id="filter-domain" title="Domínio">
     <optgroup label="Domínio">
       <option value="">Todos</option>

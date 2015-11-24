@@ -1,5 +1,13 @@
 <div class="panel panel-default">
-  <div class="panel-heading">Resultado <%= index %></div>
+  <% if params[:nature].present? && params[:nature][index].present? %>
+    <div class="panel-heading">Busca <%= index %>: <%= params[:nature][index] %></div>
+  <% elsif params[:subdomain].present? && params[:subdomain][index].present? %>
+    <div class="panel-heading">Busca <%= index %>: <%= params[:subdomain][index] %></div>
+  <% elsif params[:domain].present? && params[:domain][index].present? %>
+    <div class="panel-heading">Busca <%= index %>: <%= params[:domain][index] %></div>
+  <% else %>
+    <div class="panel-heading">Busca <%= index %>: 2014</div>
+  <% end %>
   <div class="table-responsive">
     <table class="table">
       <thead>
