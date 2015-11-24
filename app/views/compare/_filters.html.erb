@@ -46,7 +46,7 @@
           <% if params[:subdomain].present? && params[:subdomain][index] == subdomain.value %>
             selected="selected"
           <% end %>
-        ><%= subdomain.value %></option>
+        ><%= subdomain.label %></option>
       <% end %>
     </optgroup>
   </select>
