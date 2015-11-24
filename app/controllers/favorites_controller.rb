@@ -22,6 +22,7 @@ class FavoritesController < ApplicationController
 
   def new
     search_params = params.permit(:user_id, :domain, :subdomain, :nature, :city, :month, :year)
+    search_params[:domain] = Domain.where(value: search_params[:domain]).first
     @user = UserFavorites.new(search_params)
     @user.save
     head :ok

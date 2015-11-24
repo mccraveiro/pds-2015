@@ -32,7 +32,7 @@
           <% if params[:domain].present? && params[:domain][index] == domain.value %>
             selected="selected"
           <% end %>
-        ><%= domain.value %></option>
+        ><%= domain.label %></option>
       <% end %>
     </optgroup>
   </select>

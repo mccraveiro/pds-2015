@@ -95,6 +95,7 @@ class MainController < ApplicationController
         e.descricaoFonte = c[39].content.strip
         e.descricaoNatureza = c[41].content.strip
         e.descricaoTipoLicitacao = c[43].content.strip
+        e.dominio = Domain.where('value LIKE ?', "#{e.descricaoDominio}%").first.label
 
         expenses.push(e)
       end
