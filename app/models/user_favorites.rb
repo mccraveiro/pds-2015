@@ -1,6 +1,7 @@
 class UserFavorites < ActiveRecord::Base
   belongs_to :domain
   belongs_to :subdomain
+  belongs_to :nature
 
   def url
     favorite_url = "/?city=" + Rack::Utils.escape(city)
@@ -15,7 +16,10 @@ class UserFavorites < ActiveRecord::Base
       favorite_url = favorite_url + "&subdomain=" + Rack::Utils.escape(subdomain.value)
     end
 
-    favorite_url = favorite_url + "&nature=" + Rack::Utils.escape(nature)
+    if nature.present?
+      favorite_url = favorite_url + "&nature=" + Rack::Utils.escape(nature.value)
+    end
+
     favorite_url
   end
 end

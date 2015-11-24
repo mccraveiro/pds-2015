@@ -11,7 +11,7 @@ class CompareController < ApplicationController
     ]
     @domains = Domain.order(:label).all
     @subdomains = Subdomain.order(:label).all
-    @natures = Nature.order(:value).all
+    @natures = Nature.order(:label).all
 
     params_1 = get_params("1")
     params_2 = get_params("2")

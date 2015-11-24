@@ -60,7 +60,7 @@
           <% if params[:nature].present? && params[:nature][index] == nature.value %>
             selected="selected"
           <% end %>
-        ><%= nature.value %></option>
+        ><%= nature.label %></option>
       <% end %>
     </optgroup>
   </select>

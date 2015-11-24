@@ -40,7 +40,7 @@
                   </td>
                   <td><%= favorite.domain.label if favorite.domain.present? %></td>
                   <td><%= favorite.subdomain.label if favorite.subdomain.present? %></td>
-                  <td><%= favorite.nature %></td>
+                  <td><%= favorite.nature.label if favorite.nature.present? %></td>
                   <td class="text-right">
                     <a href="<%= favorite.url %>">Visualizar</a>
                   </td>
