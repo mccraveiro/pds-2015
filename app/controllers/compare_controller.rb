@@ -7,7 +7,17 @@ class CompareController < ApplicationController
   def index
     @months = [
       OpenStruct.new({ name: 'Janeiro', value: '01'}),
-      OpenStruct.new({ name: 'Fevereiro', value: '02'})
+      OpenStruct.new({ name: 'Fevereiro', value: '02'}),
+      OpenStruct.new({ name: 'Março', value: '03'}),
+      OpenStruct.new({ name: 'Abril', value: '04'}),
+      OpenStruct.new({ name: 'Maio', value: '05'}),
+      OpenStruct.new({ name: 'Junho', value: '06'}),
+      OpenStruct.new({ name: 'Julho', value: '07'}),
+      OpenStruct.new({ name: 'Agosto', value: '08'}),
+      OpenStruct.new({ name: 'Setembro', value: '09'}),
+      OpenStruct.new({ name: 'Outubro', value: '10'}),
+      OpenStruct.new({ name: 'Novembro', value: '11'}),
+      OpenStruct.new({ name: 'Dezembro', value: '12'})
     ]
     @domains = Domain.order(:value).all
     @subdomains = Subdomain.order(:value).all
@@ -33,7 +43,7 @@ class CompareController < ApplicationController
     year = '2014' if year.blank?
 
     months = if month.blank?
-      ['01', '02']#, '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '']
+      ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
     else
       [month]
     end

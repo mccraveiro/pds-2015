@@ -127,3 +127,67 @@ function buildChart(months, totais, logged) {
   new Chartist.Bar('#chart3', dataLineBar, options);
 
 }
+
+
+function comparisonBuildCharts(months, totais, logged) {
+  var monthlabels = [];
+  var totais1 = totais[1];
+  var totais2 = totais[2];
+  var values1 = [];
+  var values2 = [];
+  var i = 0;
+
+  months.forEach(function(value) {
+    monthlabels.push(value.table.name);
+  });
+
+  console.log(totais1);
+
+  totais1.forEach(function(value) {
+    values1.push({
+      "meta": "Busca 1 - " + monthlabels[i],
+      "value": value
+    });
+    i++;
+  });
+
+
+  i = 0;
+  totais2.forEach(function(value) {
+    values2.push({
+      "meta": "Busca 2 - " + monthlabels[i],
+      "value": value
+    });
+    i++;
+  });
+
+
+  var dataLine = {
+    labels: monthlabels,
+    series: [values1, values2]
+  };
+  if (logged) {
+    var options = {
+      low: 0,
+      onlyInteger: true,
+      height: '400px',
+      plugins: [
+        Chartist.plugins.tooltip()
+      ]
+    };
+  } else {
+    var options = {
+      low: 0,
+      onlyInteger: true,
+      height: '400px'
+    };
+  }
+
+
+
+  // Create a new line chart object where as first parameter we pass in a selector
+  // that is resolving to our chart container element. The Second parameter
+  // is the actual data object.
+  new Chartist.Line('#chartComparison', dataLine, options);
+
+}
