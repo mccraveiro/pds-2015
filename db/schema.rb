@@ -11,33 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121162943) do
+ActiveRecord::Schema.define(version: 20151124013915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "domains", force: :cascade do |t|
     t.string "value"
+    t.string "label"
   end
 
   create_table "natures", force: :cascade do |t|
     t.string "value"
+    t.string "label"
   end
 
   create_table "subdomains", force: :cascade do |t|
     t.string "value"
+    t.string "label"
   end
 
   create_table "user_favorites", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "domain"
-    t.string   "subdomain"
-    t.string   "nature"
     t.string   "city"
     t.string   "month"
     t.string   "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "domain_id"
+    t.integer  "subdomain_id"
+    t.integer  "nature_id"
   end
 
   create_table "users", force: :cascade do |t|

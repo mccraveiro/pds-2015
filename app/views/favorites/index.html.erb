@@ -38,11 +38,11 @@
                       <% end %>
                     <% end %>
                   </td>
-                  <td><%= favorite.domain %></td>
-                  <td><%= favorite.subdomain %></td>
-                  <td><%= favorite.nature %></td>
+                  <td><%= favorite.domain.label if favorite.domain.present? %></td>
+                  <td><%= favorite.subdomain.label if favorite.subdomain.present? %></td>
+                  <td><%= favorite.nature.label if favorite.nature.present? %></td>
                   <td class="text-right">
-                    <a href="/?city=<%= Rack::Utils.escape(favorite.city) %>&year=<%= Rack::Utils.escape(favorite.year) %>&month=<%= Rack::Utils.escape(favorite.month) %>&domain=<%= Rack::Utils.escape(favorite.domain) %>&subdomain=<%= Rack::Utils.escape(favorite.subdomain) %>&nature=<%= Rack::Utils.escape(favorite.nature) %>">Visualizar</a>
+                    <a href="<%= favorite.url %>">Visualizar</a>
                   </td>
                   <td class="text-right"><a href="/remove-favorite/<%= favorite.id %>">Excluir</a></td>
                 </tr>

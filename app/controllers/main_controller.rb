@@ -11,9 +11,9 @@ class MainController < ApplicationController
       OpenStruct.new({ name: 'Março', value: '03'}),
       OpenStruct.new({ name: 'Abril', value: '04'})
     ]
-    @domains = Domain.order(:value).all
-    @subdomains = Subdomain.order(:value).all
-    @natures = Nature.order(:value).all
+    @domains = Domain.order(:label).all
+    @subdomains = Subdomain.order(:label).all
+    @natures = Nature.order(:label).all
 
     @totais = get_total_despesa params[:city], params[:year], params[:month], params[:domain], params[:subdomain], params[:nature]
     @total = @totais.inject(0) { |sum, n| sum + n.to_f }
@@ -95,6 +95,9 @@ class MainController < ApplicationController
         e.descricaoFonte = c[39].content.strip
         e.descricaoNatureza = c[41].content.strip
         e.descricaoTipoLicitacao = c[43].content.strip
+        e.dominio = Domain.where('value LIKE ?', "#{e.descricaoDominio}%").first.label
+        e.subdominio = Subdomain.where('value LIKE ?', "#{e.descricaoSubDominio}%").first.label
+        e.natureza = Nature.where('value LIKE ?', "#{e.descricaoNatureza}%").first.label
 
         expenses.push(e)
       end

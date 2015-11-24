@@ -20,7 +20,7 @@
           <% if params[:domain].present? && params[:domain][index] == domain.value %>
             selected="selected"
           <% end %>
-        ><%= domain.value %></option>
+        ><%= domain.label %></option>
       <% end %>
     </optgroup>
   </select>
@@ -34,7 +34,7 @@
           <% if params[:subdomain].present? && params[:subdomain][index] == subdomain.value %>
             selected="selected"
           <% end %>
-        ><%= subdomain.value %></option>
+        ><%= subdomain.label %></option>
       <% end %>
     </optgroup>
   </select>
@@ -48,7 +48,7 @@
           <% if params[:nature].present? && params[:nature][index] == nature.value %>
             selected="selected"
           <% end %>
-        ><%= nature.value %></option>
+        ><%= nature.label %></option>
       <% end %>
     </optgroup>
   </select>

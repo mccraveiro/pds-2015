@@ -19,9 +19,9 @@ class CompareController < ApplicationController
       OpenStruct.new({ name: 'Novembro', value: '11'}),
       OpenStruct.new({ name: 'Dezembro', value: '12'})
     ]
-    @domains = Domain.order(:value).all
-    @subdomains = Subdomain.order(:value).all
-    @natures = Nature.order(:value).all
+    @domains = Domain.order(:label).all
+    @subdomains = Subdomain.order(:label).all
+    @natures = Nature.order(:label).all
 
     params_1 = get_params("1")
     params_2 = get_params("2")
